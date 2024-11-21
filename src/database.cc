@@ -12,8 +12,6 @@ Database::~Database()
     // Destructor
 }
 
-// コレクションを追加する関数
-// コレクションを追加する関数
 Collection* Database::createCollection(const std::string& collectionName)
 {
     auto newCollection = std::make_unique<Collection>(collectionName);

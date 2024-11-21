@@ -1,6 +1,7 @@
 #include "index/flat.h"
 #include <limits>
 #include <queue>
+#include <algorithm>
 #include <utility> // for std::pair
 
 namespace Raidillon
