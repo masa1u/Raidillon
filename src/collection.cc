@@ -1,5 +1,5 @@
 #include "collection.h"
-#include "index/flat.h"
+#include "index/Flat.h"
 #include "index/IVFFlat.h"
 #include "utils/distance.h"
 

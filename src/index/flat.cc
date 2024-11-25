@@ -1,4 +1,4 @@
-#include "index/flat.h"
+#include "index/Flat.h"
 #include <limits>
 #include <queue>
 #include <algorithm>
