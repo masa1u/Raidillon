@@ -23,7 +23,7 @@ void IVFFlatIndex::buildIndex(const std::vector<std::pair<int, std::vector<float
     }
 }
 
-std::vector<int> IVFFlatIndex::search(const std::vector<float>& query, int top_k, int nprobe) const
+std::vector<std::pair<int, float>> IVFFlatIndex::search(const std::vector<float>& query, int top_k, int nprobe) const
 {
     // クエリポイントに最も近いクラスタを見つける
     std::vector<int> nearestClusters;
@@ -44,7 +44,7 @@ std::vector<int> IVFFlatIndex::search(const std::vector<float>& query, int top_k
 
     // 選ばれたクラスタ内で検索を行う
     using DistancePair = std::pair<float, int>;
-    std::priority_queue<DistancePair, std::vector<DistancePair>, std::greater<DistancePair>> resultPq;
+    std::priority_queue<DistancePair, std::vector<DistancePair>, std::less<DistancePair>> resultPq;
 
     for (int clusterId : nearestClusters) {
         for (const auto& [id, point] : clusters_.at(clusterId)) {
@@ -56,9 +56,9 @@ std::vector<int> IVFFlatIndex::search(const std::vector<float>& query, int top_k
         }
     }
 
-    std::vector<int> result;
+    std::vector<std::pair<int, float>> result;
     while (!resultPq.empty()) {
-        result.push_back(resultPq.top().second);
+        result.emplace_back(resultPq.top().second, resultPq.top().first);
         resultPq.pop();
     }
 

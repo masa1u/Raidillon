@@ -12,10 +12,10 @@ void FlatIndex::buildIndex(const std::vector<std::pair<int, std::vector<float>>>
     indexedData_ = data;
 }
 
-std::vector<int> FlatIndex::search(const std::vector<float>& query, int top_k, int nprobe) const
+std::vector<std::pair<int, float>> FlatIndex::search(const std::vector<float>& query, int top_k, int nprobe) const
 {
     using DistancePair = std::pair<float, int>;
-    std::priority_queue<DistancePair, std::vector<DistancePair>, std::greater<DistancePair>> pq;
+    std::priority_queue<DistancePair, std::vector<DistancePair>, std::less<DistancePair>> pq;
 
     for (const auto& [id, vec] : indexedData_) {
         float distance = distance_->compute(vec, query);
@@ -25,9 +25,9 @@ std::vector<int> FlatIndex::search(const std::vector<float>& query, int top_k, i
         }
     }
 
-    std::vector<int> result;
+    std::vector<std::pair<int, float>> result;
     while (!pq.empty()) {
-        result.push_back(pq.top().second);
+        result.emplace_back(pq.top().second, pq.top().first);
         pq.pop();
     }
 
