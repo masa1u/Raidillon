@@ -1,5 +1,5 @@
 #include "collection.h"
-#include "index/flat.h"
+#include "index/Flat.h"
 #include "index/IVFFlat.h"
 #include "utils/distance.h"
 
@@ -22,6 +22,11 @@ Collection::~Collection()
 void Collection::insert(const std::vector<float>& data)
 {
     data_.emplace_back(nextDataId_++, data);
+}
+
+void Collection::insert(int id, const std::vector<float>& data)
+{
+    data_.emplace_back(id, data);
 }
 
 Index* Collection::buildIndex(const std::string& indexType, const std::string& distanceType)

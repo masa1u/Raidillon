@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <cmath>
 
 // ユークリッド距離を計算する関数
 float computeEuclideanDistance(const std::vector<float>& a, const std::vector<float>& b) {
@@ -45,11 +46,11 @@ int main() {
     }
 
     // インデックスを作成
-    Raidillon::Index* index = collection->buildIndex("IVFFlat", "euclidean", 10);
+    Raidillon::Index* index = collection->buildIndex("flat", "euclidean");
 
+    // 検索クエリ
     int top_k = 5;
-    int nprobe = 5;
-    std::vector<std::pair<int, float>> nearestResults = index->search(query, top_k, nprobe);
+    std::vector<std::pair<int, float>> nearestResults = index->search(query, top_k);
 
     // 検索結果を表示
     std::cout << "Top " << top_k << " nearest IDs and distances: ";

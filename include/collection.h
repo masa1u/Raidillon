@@ -17,6 +17,7 @@ public:
     ~Collection();
 
     void insert(const std::vector<float>& data);
+    void insert(int id, const std::vector<float>& data);
 
     // インデックスの種類と距離関数を指定してインデックスを作成する関数
     Index* buildIndex(const std::string& indexType, const std::string& distanceType);

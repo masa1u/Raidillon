@@ -3,7 +3,7 @@
 set(SOURCES
     collection.cc
     database.cc
-    index/flat.cc
+    index/Flat.cc
     index/IVFFlat.cc
 )
 
