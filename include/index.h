@@ -21,7 +21,7 @@ public:
     virtual void buildIndex(const std::vector<std::pair<int, std::vector<float>>>& data, int numClusters=0) = 0;
 
     // 純粋仮想関数としてインデックスに基づいて検索を行う関数
-    virtual std::vector<int> search(const std::vector<float>& query, int top_k, int nprobe=0) const = 0;
+    virtual std::vector<std::pair<int, float>> search(const std::vector<float>& query, int top_k, int nprobe=0) const = 0;
 protected:
     int dimension_;
     std::unique_ptr<Distance> distance_;
