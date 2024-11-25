@@ -24,6 +24,11 @@ void Collection::insert(const std::vector<float>& data)
     data_.emplace_back(nextDataId_++, data);
 }
 
+void Collection::insert(int id, const std::vector<float>& data)
+{
+    data_.emplace_back(id, data);
+}
+
 Index* Collection::buildIndex(const std::string& indexType, const std::string& distanceType)
 {
     std::unique_ptr<Distance> distance;
