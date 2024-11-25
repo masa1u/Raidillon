@@ -4,6 +4,7 @@ set(SOURCES
     collection.cc
     database.cc
     index/flat.cc
+    index/IVFFlat.cc
 )
 
 # ライブラリを作成

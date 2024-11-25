@@ -1,5 +1,6 @@
 #include "collection.h"
 #include "index/flat.h"
+#include "index/IVFFlat.h"
 #include "utils/distance.h"
 
 namespace Raidillon
@@ -38,13 +39,46 @@ Index* Collection::buildIndex(const std::string& indexType, const std::string& d
 
     if (indexType == "flat") {
         index_ = std::make_unique<FlatIndex>(std::move(distance));
-    } else {
+    } else if(indexType == "IVFFlat") {
+        std::cerr << "Error: IVFFlat index needs the number of clusters." << std::endl;
+        return nullptr;
+    }else {
         std::cerr << "Error: Unknown index type '" << indexType << "'." << std::endl;
         return nullptr;
     }
 
     if (index_) {
         index_->buildIndex(data_);
+    }
+
+    return index_.get();
+}
+
+Index* Collection::buildIndex(const std::string& indexType, const std::string& distanceType, int numClusters)
+{
+    std::unique_ptr<Distance> distance;
+
+    if (distanceType == "euclidean") {
+        distance = std::make_unique<EuclideanDistance>();
+    } else if (distanceType == "cosine") {
+        distance = std::make_unique<CosineSimilarity>();
+    } else {
+        std::cerr << "Error: Unknown distance type '" << distanceType << "'." << std::endl;
+        return nullptr;
+    } 
+
+    if (indexType == "flat") {
+        std::cerr << "Error: Flat index does not need the number of clusters." << std::endl;
+        return nullptr;
+    } else if(indexType == "IVFFlat") {
+        index_ = std::make_unique<IVFFlatIndex>(std::move(distance));
+    }else {
+        std::cerr << "Error: Unknown index type '" << indexType << "'." << std::endl;
+        return nullptr;
+    }
+
+    if (index_) {
+        index_->buildIndex(data_, numClusters);
     }
 
     return index_.get();
