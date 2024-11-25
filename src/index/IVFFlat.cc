@@ -27,7 +27,7 @@ std::vector<std::pair<int, float>> IVFFlatIndex::search(const std::vector<float>
 {
     // クエリポイントに最も近いクラスタを見つける
     std::vector<int> nearestClusters;
-    std::priority_queue<std::pair<float, int>, std::vector<std::pair<float, int>>, std::greater<>> pq;
+    std::priority_queue<std::pair<float, int>, std::vector<std::pair<float, int>>, std::less<>> pq;
 
     for (size_t i = 0; i < centroids_.size(); ++i) {
         float distance = distance_->compute(centroids_[i], query);
