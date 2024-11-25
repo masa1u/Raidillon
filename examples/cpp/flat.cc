@@ -19,7 +19,7 @@ int main() {
 
     for (int i = 0; i < 100; ++i) {
         std::vector<float> data = {static_cast<float>(dis(gen)), static_cast<float>(dis(gen)), static_cast<float>(dis(gen))};
-        collection->insert(data);
+        collection->insert(i, data);
     }
 
     // インデックスを作成
