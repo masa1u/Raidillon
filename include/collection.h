@@ -1,3 +1,4 @@
+#pragma once
 #ifndef COLLECTION_H
 #define COLLECTION_H
 
@@ -19,6 +20,7 @@ public:
 
     // インデックスの種類と距離関数を指定してインデックスを作成する関数
     Index* buildIndex(const std::string& indexType, const std::string& distanceType);
+    Index* buildIndex(const std::string& indexType, const std::string& distanceType, int numClusters);
 
     const std::string& getName() const;
     int getId() const;
