@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef RAIDILLON_H
 #define RAIDILLON_H
 
