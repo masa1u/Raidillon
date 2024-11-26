@@ -71,7 +71,6 @@ To use the library in Python, follow these steps:
 
 1. Add the pybind11 submodule:
 ```
-git submodule add https://github.com/pybind/pybind11.git bindings/python/pybind11
 git submodule update --init
 ```
 
