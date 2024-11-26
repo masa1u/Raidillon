@@ -12,3 +12,4 @@ include_directories(include)
 # サブディレクトリを追加
 add_subdirectory(src)
 add_subdirectory(examples/cpp)
+add_subdirectory(bindings/python)
