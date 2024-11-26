@@ -9,6 +9,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # インクルードディレクトリを設定
 include_directories(include)
 
+# Position Independent Codeを有効にする
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 # サブディレクトリを追加
 add_subdirectory(src)
 add_subdirectory(examples/cpp)
