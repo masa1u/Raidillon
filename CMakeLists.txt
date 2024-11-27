@@ -12,6 +12,8 @@ include_directories(include)
 # Position Independent Codeを有効にする
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+set(CMAKE_BUILD_TYPE Debug)
+
 # サブディレクトリを追加
 add_subdirectory(src)
 add_subdirectory(examples/cpp)
