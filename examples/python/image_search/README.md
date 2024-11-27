@@ -18,12 +18,12 @@ This project demonstrates how to use the Raidillon library for image search. The
    source myenv/bin/activate
    ```
 
-3. Install dependencies:
+3. **Install dependencies**:
     ```
     pip install -r requirements.txt
     ```
 
-4. Build the Raidillon library:
+4. **Build the Raidillon library**:
     ```
     cd ../../..
     mkdir build
@@ -36,16 +36,15 @@ This project demonstrates how to use the Raidillon library for image search. The
     ```
 
 ## Usage
-1. Prepare the data:
-    - Place the images to be searched in the data/data directory.
-    - Place the query images in the data/query directory.
-    - Sample images are provided in these directories.
+1. **Prepare the data**:
+    - Place the images to be searched in the `../data/data` directory.
+    - Place the query images in the `../data/query` directory.
 
-2. Run the image search:
+2. **Run the image search**:
     ```
     python IVFFlat.py
     ```
-3. View the results: 
+3. **View the results**: 
     The results will be saved in the results directory. Each query image will have a corresponding result image showing the top matches.
 
 ## Example Result

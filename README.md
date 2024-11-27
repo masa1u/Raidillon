@@ -21,7 +21,7 @@ cd build
 ./exmaples/cpp/Flat
 ```
 
-```flat.cc
+```Flat.cc
 #include "database.h"
 #include "collection.h"
 #include "index.h"
@@ -67,7 +67,7 @@ int main() {
 ```
 
 ### Python Example
-To use the library in Python, follow these steps:
+To use the `Flat.py` sample code, follow these steps:
 
 1. Add the pybind11 submodule:
 ```
@@ -93,8 +93,8 @@ cd ../bindings/python
 python setup.py install
 ```
 
-5. Create a Python script (e.g., test_raidillon.py) with the following content:
-```
+5. Run a Python script (e.g., Flat.py):
+```Flat.py
 import raidillon_bindings as rb
 import random
 
@@ -123,5 +123,5 @@ print(f"Top {top_k} nearest IDs and distances: {nearest_results}")
 
 6. Run the Python script:
 ```
-python test_raidillon.py
+python Flat.py
 ```
