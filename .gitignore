@@ -4,4 +4,6 @@
 /bindings/python/build
 /bindings/python/raidillon_bindings.egg-info
 /bindings/python/dist
-/myenv
+**/myenv/**
+**/__pycache__/**
+**/.DS_Store
