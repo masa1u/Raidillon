@@ -14,7 +14,7 @@ IncreSearch is a high-performance vector search index designed for efficient inc
 Milvus creates indexes in units called segments, requiring searches to be performed on a per-segment basis. This approach is less efficient compared to using a single global index. Additionally, compaction processes to merge segments are resource-intensive and continuously consume computational resources, making them costly.
 
 ### Vearch
-Vearch adds new vectors directly to clusters within the vector search index. This method leads to imbalances between clusters, causing decreased search efficiency over time. As illustrated in the SPFresh paper (see Figure 3), performance degradation becomes significant as the data grows.
+Vearch adds new vectors directly to clusters within the vector search index. This method leads to imbalances between clusters, causing decreased search efficiency over time. As illustrated in the SPFresh paper (see Figure 2), performance degradation becomes significant as the data grows.
 
 ### Vald
 Vald utilizes an index called NGT that supports incremental updates. However, updating the graph is computationally expensive and involves acquiring giant locks, which can hinder performance and scalability.
@@ -22,5 +22,8 @@ Vald utilizes an index called NGT that supports incremental updates. However, up
 ### SPFresh
 SPFresh is a vector search index developed for on-disk usage. It performs index balancing adjustments for inserted data. While it mitigates some issues of incremental updates, it still requires partial graph updates, which can introduce drawbacks such as increased update latency and complexity.
 
+![SPANN](assets/sosp23-spfresh-fig3.png "spann")
+
+(SPFresh Fig3, SOSP2023)
 
 **IncreSearch**, on the other hand, adapts SPFresh's rebalancing concepts for in-memory usage, eliminating the performance bottlenecks associated with graph updates. By managing cluster centroids as graphs and optimizing their updates, IncreSearch provides low-latency searches without the overhead of frequent graph adjustments.
